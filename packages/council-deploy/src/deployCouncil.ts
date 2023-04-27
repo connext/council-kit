@@ -53,9 +53,9 @@ export async function deployCouncil(signer: Signer): Promise<
     // the normal proposal flow.
     ownerAddress: signerAddress,
     // base quorum is 1 so it only takes 1 gsc member to pass a proposal
-    baseQuorum: "1",
-    lockDuration: 10,
-    extraVotingTime: 15,
+    baseQuorum: process.env.GSC_BASE_QUORUM ?? "1",
+    lockDuration: +(process.env.GSC_LOCK_DURATION ?? "10"),
+    extraVotingTime: +(process.env.GSC_EXTRA_VOTING ?? "15"),
   });
 
   // The Timelock is in charge of executing proposals that upgrade the protocol.
@@ -66,7 +66,7 @@ export async function deployCouncil(signer: Signer): Promise<
   const timelock = await deployTimelock({
     signer,
     // can execute a call 10 blocks after it's registered
-    waitTimeInBlocks: 10,
+    waitTimeInBlocks: +(process.env.WAIT_BLOCKS ?? "10"),
     // Temporarily set the owner as the current signer. We will reassign the
     // owner to CoreVoting at the end so that only community votes can govern
     // the system.
@@ -119,15 +119,15 @@ export async function deployCouncil(signer: Signer): Promise<
       vestingVaultProxy.address,
     ],
     // set quorum to 50 ELFI so any test account can pass a vote
-    baseQuorum: "50",
+    baseQuorum: process.env.BASE_QUORUM ?? "50",
     // set minProposalPower to 50 ELFI so any test account can make a proposal
-    minProposalPower: "50",
+    minProposalPower: process.env.MIN_PROPOSAL_POWER ?? "50",
     // the GSC does not have a voting power requirement to submit a proposal
     gscCoreVotingAddress: gscCoreVoting.address,
     // can execute a proposal 10 blocks after it gets created
-    lockDuration: 10,
+    lockDuration: +(process.env.LOCK_DURATION ?? "10"),
     // can still vote on a proposal for this many blocks after it unlocks
-    extraVotingTime: 300000, // ~ 1 week on goerli
+    extraVotingTime: +(process.env.EXTRA_VOTING ?? "300000"), // ~ 1 week on goerli
   });
 
   const gscVault = await deployGSCVault({
@@ -137,9 +137,9 @@ export async function deployCouncil(signer: Signer): Promise<
     // voting power minimum to be on the GSC.
     coreVotingAddress: coreVoting.address,
     // any test account can get onto GSC with this much vote power
-    votingPowerBound: "100",
+    votingPowerBound: process.env.GSC_VOTING_POWER_BOUND ?? "100",
     // members are idle for 60 seconds after they join the GSC
-    idleDuration: 60,
+    idleDuration: +(process.env.GSC_IDLE_DURATION ?? "60"),
   });
 
   // The GSC Vault must be created *after* the GSCCoreVoting contract is
