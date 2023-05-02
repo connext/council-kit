@@ -203,6 +203,93 @@
           "name": "Airdrop"
         }
       ]
+    },
+    {
+      "name": "connext-testnet",
+      "timestamp": 1682983473820,
+      "signer": "0xa2Ee8DCd2A8A3A54Cf37F6590E5108BbE502B006",
+      "contracts": [
+        {
+          "address": "0xDCFc82E1176A8E9Bda61C47d497c976e056abacA",
+          "name": "Treasury",
+          "deploymentArgs": ["0x28c68d9623a1536176B7060530c1a526116237F3"]
+        },
+        {
+          "address": "0x2d39f26Ffa159108d41134b258737Ba6A7072E8b",
+          "name": "CoreVoting",
+          "deploymentArgs": [
+            "0xa2Ee8DCd2A8A3A54Cf37F6590E5108BbE502B006",
+            "0x02b5e3af16b1880000",
+            "0x02b5e3af16b1880000",
+            "0x59760F96D630fe20149f66C80C528EA5ca48265b",
+            [
+              "0xb2D45243Eb5ab15120a871CC4a761B9c06dbd1a1",
+              "0x2F02e073Be8260284cE72721d431e19461C0C1a8"
+            ]
+          ]
+        },
+        {
+          "address": "0x59760F96D630fe20149f66C80C528EA5ca48265b",
+          "name": "GSCCoreVoting",
+          "deploymentArgs": [
+            "0xa2Ee8DCd2A8A3A54Cf37F6590E5108BbE502B006",
+            "0x0de0b6b3a7640000",
+            "0x0de0b6b3a7640000",
+            "0x0000000000000000000000000000000000000000",
+            []
+          ]
+        },
+        {
+          "address": "0x74dD6b8C02377a3097C0E7FcD6FeC846B49c4017",
+          "name": "GSCVault",
+          "deploymentArgs": [
+            "0x2d39f26Ffa159108d41134b258737Ba6A7072E8b",
+            "0x0de0b6b3a7640000",
+            "0xa2Ee8DCd2A8A3A54Cf37F6590E5108BbE502B006"
+          ]
+        },
+        {
+          "address": "0x415c4AbDe0965906ae8Fb44Ce6C1AafCd4B68C39",
+          "name": "LockingVault",
+          "deploymentArgs": [
+            "0x8a3ce776a45FB6241241eBe26b57F5cde337fEB6",
+            300000
+          ]
+        },
+        {
+          "address": "0xb2D45243Eb5ab15120a871CC4a761B9c06dbd1a1",
+          "name": "LockingVaultProxy",
+          "deploymentArgs": [
+            "0x28c68d9623a1536176B7060530c1a526116237F3",
+            "0x415c4AbDe0965906ae8Fb44Ce6C1AafCd4B68C39"
+          ]
+        },
+        {
+          "address": "0x28c68d9623a1536176B7060530c1a526116237F3",
+          "name": "Timelock",
+          "deploymentArgs": [
+            150,
+            "0xa2Ee8DCd2A8A3A54Cf37F6590E5108BbE502B006",
+            "0x59760F96D630fe20149f66C80C528EA5ca48265b"
+          ]
+        },
+        {
+          "address": "0xba9a7db42c3Ce4A3E56E61715d1641D11b7Df65E",
+          "name": "VestingVault",
+          "deploymentArgs": [
+            "0x8a3ce776a45FB6241241eBe26b57F5cde337fEB6",
+            300000
+          ]
+        },
+        {
+          "address": "0x2F02e073Be8260284cE72721d431e19461C0C1a8",
+          "name": "VestingVaultProxy",
+          "deploymentArgs": [
+            "0x28c68d9623a1536176B7060530c1a526116237F3",
+            "0xba9a7db42c3Ce4A3E56E61715d1641D11b7Df65E"
+          ]
+        }
+      ]
     }
   ]
 }
